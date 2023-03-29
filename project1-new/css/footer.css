@@ -1,0 +1,32 @@
+footer {
+    display: flex;
+    background: rgba(0, 28, 39, 0.75);
+    height: 62px;
+    justify-content: center;
+    align-items: center;
+    gap: 152px;
+}
+
+footer span {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 28px;
+    letter-spacing: 0.1px;
+    color: white;
+}
+
+@media screen and (max-width:768px) {
+    footer span {
+        font-size: 12px;
+    }
+
+    footer {
+        gap: 20px;
+    }
+}
+
+@media screen and (max-width:391px) {
+    footer span {
+        font-size: 9px;
+    }
+}
