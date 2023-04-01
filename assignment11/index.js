@@ -23,3 +23,8 @@
 // btn.addEventListener("click", () => {
 //     btn.classList.add("blue");
 // })
+// q7
+// const input = document.getElementById("input-field");
+// input.value = "Rohan"
+// q8
+
