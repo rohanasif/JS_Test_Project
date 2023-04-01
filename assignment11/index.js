@@ -27,4 +27,9 @@
 // const input = document.getElementById("input-field");
 // input.value = "Rohan"
 // q8
+// const heading = document.getElementById("heading");
+// heading.setAttribute("id", "heading2");
+// q9
+
+// q10
 
