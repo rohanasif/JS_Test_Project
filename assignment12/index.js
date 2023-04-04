@@ -15,3 +15,5 @@ function calculate(num1, num2, operator) {
         return "Invalid operators"
     }
 }
+
+console.log(calculate(1, 2, "+"));
