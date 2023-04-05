@@ -1,15 +1,15 @@
 // q1
 // const score = +prompt("Enter your test score");
-// if (90 <= score <= 100) {
+// if (90 <= score && score <= 100) {
 //     console.log("A");
 // }
-// else if (80 <= score <= 89) {
+// else if (80 <= score && score <= 89) {
 //     console.log("B");
 // }
-// else if (70 <= score <= 79) {
+// else if (70 <= score && score <= 79) {
 //     console.log("C");
 // }
-// else if (60 <= score <= 69) {
+// else if (60 <= score && score <= 69) {
 //     console.log("D");
 // }
 // else if (score < 60) {
