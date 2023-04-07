@@ -17,7 +17,7 @@ submitBtn.addEventListener("click", (e) => {
     const passwordValue = password.value;
     const confirmationValue = confirmation.value;
 
-    for (let char of name) {
+    for (let char of nameValue) {
         // If is not alphabet
         if ((char < "a" || char > "z") && char !== " ") {
             alert("Name should only be letters");
