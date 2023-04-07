@@ -5,8 +5,10 @@ const email = document.getElementById("email");
 const password = document.getElementById("password");
 const confirmation = document.getElementById("confirmation");
 const submitBtn = document.getElementById("submit-btn")
-var charCount = 0;
-const numsAndSpecials = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "!", "@", "#", "$", "~", "`", "%", "^", "&", "*", "(", ")", "-", "_", "=", "+", "[", "]", "|", "\\", ";", ":", "'", "\"", ",", "<", ".", ">", "?"]
+var numsCount = 0;
+var specialsCount = 0;
+const nums = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+const specials = ["!", "@", "#", "$", "~", "`", "%", "^", "&", "*", "(", ")", "-", "_", "=", "+", "[", "]", "|", "\\", ";", ":", "'", "\"", ",", "<", ".", ">", "?"]
 
 submitBtn.addEventListener("click", (e) => {
     e.preventDefault();
@@ -15,9 +17,9 @@ submitBtn.addEventListener("click", (e) => {
     const passwordValue = password.value;
     const confirmationValue = confirmation.value;
 
-    for (i = 0; i < nameValue.length; i++) {
+    for (let char of name) {
         // If is not alphabet
-        if ((nameValue[i] < "a" || nameValue[i] > "z") && nameValue[i] !== " ") {
+        if ((char < "a" || char > "z") && char !== " ") {
             alert("Name should only be letters");
             break;
         }
@@ -37,12 +39,17 @@ submitBtn.addEventListener("click", (e) => {
     if (passwordValue[0] < "A" || passwordValue[0] > "Z") {
         alert("First letter of password must be capital")
     }
-    for (char of numsAndSpecials) {
-        if (passwordValue.includes(char)) {
-            charCount++;
+    for (let num of nums) {
+        if (passwordValue.includes(num)) {
+            numsCount++;
         }
     }
-    if (charCount < 2) {
+    for (let special of specials) {
+        if (passwordValue.includes(special)) {
+            specialsCount++;
+        }
+    }
+    if (numsCount === 0 || specialsCount === 0) {
         alert("Password must contain atleast one digit and atleast one special character")
     }
 
