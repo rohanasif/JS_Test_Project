@@ -18,32 +18,36 @@ submitBtn.addEventListener("click", (e) => {
     const confirmationValue = confirmation.value;
 
     for (let char of nameValue) {
-        // If is not alphabet
+        // If its not alphabet
         if ((char < "a" || char > "z") && char !== " ") {
             alert("Name should only be letters");
             break;
         }
     }
-
+    // username is atleast 7 chars long
     if (usernameValue.length < 7) {
         alert("Username should be atleast 7 characters long")
     }
+    // email '@' validation
     const emailValue = email.value;
     if (!emailValue.includes("@")) {
         alert("Invalid email")
     }
-
+    // password is atleast 8 chars long
     if (passwordValue.length < 8) {
         alert("Password should be atleast 8 characters long")
     }
+    // First letter check
     if (passwordValue[0] < "A" || passwordValue[0] > "Z") {
         alert("First letter of password must be capital")
     }
+    // add numcount if num found
     for (let num of nums) {
         if (passwordValue.includes(num)) {
             numsCount++;
         }
     }
+    // add specialcount if spec
     for (let special of specials) {
         if (passwordValue.includes(special)) {
             specialsCount++;
