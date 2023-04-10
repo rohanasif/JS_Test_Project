@@ -15,7 +15,6 @@ var regMatchCount = 0;
 const makecheck = document.getElementById("makecheck");
 const modelcheck = document.getElementById("modelcheck");
 const regcheck = document.getElementById("regcheck");
-const colorcheck = document.getElementById("colorcheck");
 
 // Get submit button element
 const submitbtn = document.getElementById("submit-btn");
@@ -29,8 +28,8 @@ var isUniqueReg;
 // Add validation to make
 const validateMake = () => {
     const makeValue = make.value;
-    if (makeValue.length !== 4) {
-        makecheck.innerText = "Car make should be 4 characters long";
+    if (makeValue.length < 8) {
+        makecheck.innerText = "Car make should be atleast 8 characters long";
         isValidMake = false;
     }
     else {
