@@ -83,6 +83,7 @@ submitbtn.addEventListener("click", (e) => {
     const regValue = reg.value;
     const colorValue = color.value;
 
+    // Only submit if all values are present and are valid according to validation rules
     if (makeValue !== "" && modelValue !== "" && regValue !== "" && colorValue !== "") {
         if (isValidMake && isValidModel && isValidReg) {
 
