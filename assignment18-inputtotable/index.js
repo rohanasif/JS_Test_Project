@@ -8,6 +8,9 @@ const color = document.getElementById("color");
 // Create serial no.
 var serialNo = 0;
 
+// Create a reg match counter
+var regMatchCount = 0;
+
 // Get all paragraph elements
 const makecheck = document.getElementById("makecheck");
 const modelcheck = document.getElementById("modelcheck");
@@ -21,6 +24,7 @@ const submitbtn = document.getElementById("submit-btn");
 var isValidMake;
 var isValidModel;
 var isValidReg;
+var isUniqueReg;
 
 // Add validation to make
 const validateMake = () => {
@@ -83,7 +87,7 @@ submitbtn.addEventListener("click", (e) => {
     const regValue = reg.value;
     const colorValue = color.value;
 
-    // Only submit if all values are present and are valid according to validation rules
+    // Only submit if all values are present and are valid according to validation rules, and registration numbers are unique
     if (makeValue !== "" && modelValue !== "" && regValue !== "" && colorValue !== "") {
         if (isValidMake && isValidModel && isValidReg) {
 
@@ -91,8 +95,6 @@ submitbtn.addEventListener("click", (e) => {
             serialNo++;
             const serialtd = document.createElement("td");
             const serialnode = document.createTextNode(serialNo);
-
-
 
             // Create a table row
             const tr = document.createElement("tr");
@@ -123,6 +125,32 @@ submitbtn.addEventListener("click", (e) => {
 
             // Append the tr to tbody
             tbody.appendChild(tr);
+
+            //---------------------------------------
+
+            // Add a class to all regtds
+            regtd.classList.add("regnocell");
+
+            // Loop through all regtds and check if any two are same
+            const regmatchcheck = document.getElementById("regmatchcheck");
+            const regtds = document.getElementsByClassName("regnocell");
+            for (const regtd1 of regtds) {
+                for (const regtd2 of regtds) {
+                    if (regtd1 === regtd2) {
+                        regMatchCount++;
+                    }
+                }
+            }
+            if (regMatchCount > 1) {
+                isUniqueReg = false;
+                regmatchcheck.innerText = "Two registration numbers cannot be same";
+            }
+            else {
+                isUniqueReg = true;
+            }
+
+            //---------------------------------------
+
         }
         else {
             alert("Check all values first!")
