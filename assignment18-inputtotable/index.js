@@ -35,8 +35,9 @@ const validateMake = () => {
     }
 }
 
-// Add eventListener to make
+// Add eventListeners to make
 make.addEventListener("focusout", validateMake);
+make.addEventListener("input", validateMake);
 
 // Add validation to model
 const validateModel = () => {
@@ -51,8 +52,9 @@ const validateModel = () => {
     }
 }
 
-// Add eventListener to model
+// Add eventListeners to model
 model.addEventListener("focusout", validateModel);
+model.addEventListener("input", validateModel);
 
 // Add validation to registration no.
 const validateReg = () => {
@@ -69,11 +71,19 @@ const validateReg = () => {
 
 // Add eventListener to registration no.
 reg.addEventListener("focusout", validateReg);
+reg.addEventListener("input", validateReg);
 
 // Handle submit
 submitbtn.addEventListener("click", (e) => {
     e.preventDefault();
-    if (make && model && reg) {
+
+    // Get all values from the form
+    const makeValue = make.value;
+    const modelValue = model.value;
+    const regValue = reg.value;
+    const colorValue = color.value;
+
+    if (makeValue !== "" && modelValue !== "" && regValue !== "" && colorValue !== "") {
         if (isValidMake && isValidModel && isValidReg) {
 
             // Increase serial no. by one and add to dom
@@ -82,12 +92,6 @@ submitbtn.addEventListener("click", (e) => {
             const serialnode = document.createTextNode(serialNo);
 
 
-
-            // Get all values from the form
-            const makeValue = make.value;
-            const modelValue = model.value;
-            const regValue = reg.value;
-            const colorValue = color.value;
 
             // Create a table row
             const tr = document.createElement("tr");
@@ -126,5 +130,4 @@ submitbtn.addEventListener("click", (e) => {
     else {
         alert("Some of the values are missing")
     }
-
 })
