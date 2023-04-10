@@ -29,8 +29,8 @@ var isUniqueReg;
 // Add validation to make
 const validateMake = () => {
     const makeValue = make.value;
-    if (makeValue.length < 8) {
-        makecheck.innerText = "Car make should be atleast 8 characters long";
+    if (makeValue.length !== 4) {
+        makecheck.innerText = "Car make should be 4 characters long";
         isValidMake = false;
     }
     else {
