@@ -76,6 +76,7 @@ const validateReg = () => {
 reg.addEventListener("focusout", validateReg);
 reg.addEventListener("input", validateReg);
 
+
 // Handle submit
 submitbtn.addEventListener("click", (e) => {
     e.preventDefault();
@@ -130,32 +131,37 @@ submitbtn.addEventListener("click", (e) => {
             // Add a class to all regtds
             regtd.classList.add("regnocell");
 
-            // Loop through all regtds and check if any two are same
+            // Check if registration number is unique
+            let isUniqueReg = true;
             const regmatchcheck = document.getElementById("regmatchcheck");
             const regtds = document.getElementsByClassName("regnocell");
             for (const regtd1 of regtds) {
                 for (const regtd2 of regtds) {
-                    if (regtd1 === regtd2) {
-                        regMatchCount++;
+                    if (regtd1 !== regtd2 && regtd1.innerText === regtd2.innerText) {
+                        isUniqueReg = false;
+                        regmatchcheck.innerText = "Two registration numbers cannot be same";
+                        break;
                     }
                 }
+                if (!isUniqueReg) {
+                    break;
+                }
             }
-            if (regMatchCount > 1) {
-                isUniqueReg = false;
-                regmatchcheck.innerText = "Two registration numbers cannot be same";
-            }
-            else {
-                isUniqueReg = true;
+
+            // Only submit if registration number is unique
+            if (isUniqueReg) {
+                regmatchcheck.innerText = "";
+            } else {
+                alert("Registration number is not unique. Please enter a different registration number.");
+                tr.remove();
             }
 
             //---------------------------------------
 
+        } else {
+            alert("Check all values first!");
         }
-        else {
-            alert("Check all values first!")
-        }
+    } else {
+        alert("Some of the values are missing");
     }
-    else {
-        alert("Some of the values are missing")
-    }
-})
+});
