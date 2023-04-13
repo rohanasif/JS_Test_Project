@@ -20,7 +20,7 @@ nav>span {
 
 form>input {
     color: rgb(78, 78, 78);
-    padding: 2px 10px;
+    padding: 10px;
     border-radius: 2rem;
     font-size: 1.5rem;
     border: none;
@@ -30,3 +30,35 @@ form>input {
 form>input:focus {
     outline: none;
 }
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px 40px;
+    justify-content: space-between;
+}
+
+.card {
+    box-sizing: border-box;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 25%;
+    height: 400px;
+    box-shadow: 2px 2px 10px grey;
+}
+
+.img {
+    width: 100%;
+    height: fit-content;
+}
+
+.desc {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.name {}
