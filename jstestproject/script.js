@@ -25,8 +25,11 @@ search.addEventListener("keypress", (e) => {
                     img.src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
                     const title = document.createElement("p");
                     title.innerText = movie.original_title;
+                    const releaseDate = document.createElement("p");
+                    releaseDate.innerText = `Release date: ${movie.release_date}`;
                     card.appendChild(img);
                     card.appendChild(title);
+                    card.appendChild(releaseDate);
                     section.appendChild(card);
 
                     // Add click event to each card
@@ -36,19 +39,14 @@ search.addEventListener("keypress", (e) => {
                         closeBtn.innerText = "Close";
                         const title = document.createElement("h2");
                         title.innerText = movie.original_title;
-                        const releaseDate = document.createElement("p");
-                        releaseDate.innerText = `Release date: ${movie.release_date}`;
+
                         const overview = document.createElement("p");
                         overview.innerText = movie.overview;
-                        const poster = document.createElement("img");
-                        poster.src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
                         const castTitle = document.createElement("h3");
                         castTitle.innerText = "Cast:";
                         detail.appendChild(closeBtn);
                         detail.appendChild(title);
-                        detail.appendChild(releaseDate);
                         detail.appendChild(overview);
-                        detail.appendChild(poster);
                         detail.appendChild(castTitle);
                         section.appendChild(detail);
 

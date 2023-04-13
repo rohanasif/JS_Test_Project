@@ -17,6 +17,7 @@ nav {
 h1 {
     font-size: 2rem;
     font-weight: 600;
+    color: white;
 }
 
 input {
@@ -92,6 +93,7 @@ span {
     z-index: 1;
     top: 25%;
     left: 25%;
+    background-color: #e7fff7;
 }
 
 button {
