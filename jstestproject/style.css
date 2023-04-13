@@ -39,6 +39,25 @@ input:focus {
     outline: none;
 }
 
+/* Style the icon when its displayed at at and below 650px */
+.icon-div {
+    cursor: pointer;
+    display: none !important;
+    font-size: 1.5rem;
+}
+
+
+@media screen and (max-width: 650px) {
+    input {
+        display: none;
+    }
+
+    .icon-div {
+        display: block !important;
+    }
+
+}
+
 /* ----------------------------Main Section Styling--------------------------- */
 
 /* Style the main content section */
