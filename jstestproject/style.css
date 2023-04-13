@@ -79,7 +79,7 @@ span {
 }
 
 .detail {
-    display: none;
+    display: flex;
     align-self: center;
     justify-content: space-between;
     padding: 20px;
@@ -89,6 +89,7 @@ span {
     box-shadow: 2px 2px 10px #8088ff;
     border-radius: 1rem;
     position: absolute;
+    z-index: 1;
     top: 25%;
     left: 25%;
 }
