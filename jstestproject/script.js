@@ -62,18 +62,3 @@ closebtns.forEach((closebtn) => {
 
     })
 });
-
-
-
-
-
-
-
-
-
-
-// Fetch by keyword
-        // const keywordData = fetch(`${BASE_URL}keyword?api_key=${API_KEY}&query=${formatted_query}`)
-        //     .then(res => res.json())
-        //     .then(data => localStorage.setItem("data", JSON.stringify(data)))
-        //     .catch(err => console.error(err))
