@@ -29,7 +29,7 @@ search.addEventListener("keypress", (e) => {
                 return id;
             })
             .then(identity => {
-                fetch(`${CAST_URL}${identity}/credits?api_key=${API_KEY}`)
+                return fetch(`${CAST_URL}${identity}/credits?api_key=${API_KEY}`)
             })
             .then(res => res.json())
             .then(data => localStorage.setItem("credits", JSON.stringify(data)))
@@ -46,6 +46,7 @@ search.addEventListener("keypress", (e) => {
                         detail[index].style.display = "flex";
                     });
                 });
+
 
             })
             .catch(err => console.error(err));
