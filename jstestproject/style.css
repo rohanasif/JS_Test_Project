@@ -109,6 +109,7 @@ span {
 
 /* Style the button in the detail view */
 button {
+    align-self: center;
     font-size: large;
     font-weight: 700;
     padding: 20px;

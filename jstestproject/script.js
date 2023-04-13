@@ -45,6 +45,7 @@ function showCast(cast) {
     cast.forEach((actor) => {
         const listItem = document.createElement("li");
         listItem.innerText = actor.name;
+        listItem.style.listStyle = "none";
         castList.appendChild(listItem);
     });
     detail.appendChild(castList);
@@ -80,10 +81,17 @@ function showMovies(movies) {
             ? `Release date: ${movie.release_date}`
             : "Release date: Not found";
 
+        // Create a paragraph element to display the movie's rating.
+        const rating = document.createElement("p");
+
+        // Round the rating to 1 decimal place
+        rating.innerText = `Rating: ${Math.round(parseFloat(movie.vote_average) * 10) / 10}/10`;
+
         // Append the image, title, and release date elements to the card element.
         card.appendChild(img);
         card.appendChild(title);
         card.appendChild(releaseDate);
+        card.appendChild(rating);
 
         // Append the card element to the section element.
         section.appendChild(card);
