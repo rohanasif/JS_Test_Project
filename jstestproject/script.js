@@ -22,23 +22,12 @@ search.addEventListener("keypress", (e) => {
                     const card = document.createElement("div");
                     card.className = "card";
                     const img = document.createElement("img");
-                    if (movie.poster_path) {
-                        img.src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
-                    }
-                    // else{
-                    //     img.src = 
-                    // }
+                    img.src = movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : "https://placehold.co/210x350";
                     const title = document.createElement("p");
                     title.innerText = movie.original_title;
                     const releaseDate = document.createElement("p");
                     releaseDate.style.fontSize = "10px";
-                    if (movie.release_date) {
-                        releaseDate.innerText = `Release date: ${movie.release_date}`;
-                    }
-                    else {
-                        releaseDate.innerText = "";
-                    }
-
+                    releaseDate.innerText = movie.release_date ? `Release date: ${movie.release_date}` : "Release date: Not found";
                     card.appendChild(img);
                     card.appendChild(title);
                     card.appendChild(releaseDate);
