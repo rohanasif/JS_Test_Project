@@ -6,8 +6,9 @@ const detail = document.querySelector(".detail");
 const section = document.querySelector("section");
 
 search.addEventListener("keypress", (e) => {
-    e.preventDefault();
+
     if (e.key === "Enter") {
+        e.preventDefault();
         const query = e.target.value;
         const formatted_query = query.split(" ").join("%20");
 
@@ -43,7 +44,7 @@ search.addEventListener("keypress", (e) => {
 cards.forEach(card => {
     card.addEventListener("click", (e) => {
         e.preventDefault();
-        
+
     })
 })
 const closebtns = document.querySelectorAll("button");
