@@ -157,6 +157,10 @@ button:hover {
     transition-duration: 0.5s;
 }
 
+button:active {
+    background-color: rgb(0, 126, 126);
+}
+
 .cast-ul {
     list-style: none;
 }
