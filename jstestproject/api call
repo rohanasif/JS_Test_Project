@@ -1,5 +1,0 @@
-Search by movie name:
-https://api.themoviedb.org/3/search/movie?api_key=92dc21f6d154878a0bdc203f0e869f85&query=The%20last%20of%20us&page=1
-
-Seatch by keyword:
-https://api.themoviedb.org/3/search/keyword?api_key=92dc21f6d154878a0bdc203f0e869f85&query=The%20last%20of%20us&page=1
