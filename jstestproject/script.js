@@ -118,7 +118,7 @@ function showMovies(movies) {
 
             // Create a button element to close the movie details.
             const closeBtn = document.createElement("button");
-            closeBtn.innerText = "Close";
+            closeBtn.innerText = "X";
 
             // Create a heading element to display the movie's original title.
             const title = document.createElement("h2");

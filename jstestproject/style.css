@@ -143,8 +143,8 @@ button {
     align-self: flex-end;
     font-size: large;
     font-weight: 700;
-    padding: 20px;
-    width: 100px;
+    height: 40px;
+    width: 40px;
     border: none;
     border-radius: 999px;
     background-color: #b5ffff;
@@ -154,7 +154,7 @@ button {
 /* Style the hover effect on the button in the detail view */
 button:hover {
     background-color: aqua;
-    transition-duration: 0.8s;
+    transition-duration: 0.5s;
 }
 
 .cast-ul {
