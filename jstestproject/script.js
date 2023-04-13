@@ -6,8 +6,12 @@ const CAST_URL = "https://api.themoviedb.org/3/movie/";
 // Get dom elements
 const search = document.getElementById("search");
 const section = document.querySelector("section");
+
+// Create the detail and overlay elements
 const detail = document.createElement("div");
 detail.className = "detail";
+const overlay = document.createElement("div");
+overlay.className = "overlay";
 
 // Add keypress listener to search bar
 search.addEventListener("keypress", (e) => {
@@ -134,8 +138,11 @@ function showMovies(movies) {
             detail.appendChild(overview);
             detail.appendChild(castTitle);
 
-            // Append the detail element to the section element.
-            section.appendChild(detail);
+            // Append the detail element to the overlay element.
+            overlay.appendChild(detail);
+
+            // Append the overlay element to the section element.
+            section.appendChild(overlay);
 
             // Check if the cast data for the movie is in the cache.
             if (localStorage.getItem(`${movie.id}`)) {
@@ -159,7 +166,7 @@ function showMovies(movies) {
 
             // Add a click event listener to the close button element to remove the detail element.
             closeBtn.addEventListener("click", () => {
-                section.removeChild(detail);
+                section.removeChild(overlay);
             });
         });
 
