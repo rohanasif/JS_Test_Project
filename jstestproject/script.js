@@ -20,22 +20,29 @@ search.addEventListener("keypress", (e) => {
         if (localStorage.getItem(formatted_query)) {
             const movies = JSON.parse(localStorage.getItem(formatted_query));
             showMovies(movies);
+
+            // Returning false from an event handler will automatically call event.stopPropagation() and event.preventDefault().
             return false;
         }
 
-        // fetch data and cache it
-        fetch(
-            `${SEARCH_URL}movie?api_key=${API_KEY}&query=${formatted_query}`
-        )
-            .then((res) => res.json())
-            .then((data) => {
-                const movies = data.results;
-                localStorage.setItem(formatted_query, JSON.stringify(movies));
-                showMovies(movies);
-            })
-            .catch((err) => console.error(err));
+        // else fetch data and cache it
+        else {
+            fetch(
+                `${SEARCH_URL}movie?api_key=${API_KEY}&query=${formatted_query}`
+            )
+                .then((res) => res.json())
+                .then((data) => {
+                    const movies = data.results;
+                    localStorage.setItem(formatted_query, JSON.stringify(movies));
+                    showMovies(movies);
+                })
+                .catch((err) => console.error(err));
 
-        return false;
+            // Returning false from an event handler will automatically call event.stopPropagation() and event.preventDefault().
+            return false;
+        }
+
+
     }
 });
 
