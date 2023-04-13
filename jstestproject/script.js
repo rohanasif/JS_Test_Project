@@ -24,7 +24,7 @@ search.addEventListener("keypress", (e) => {
         }
 
         // fetch data and cache it
-        const movieData = fetch(
+        fetch(
             `${SEARCH_URL}movie?api_key=${API_KEY}&query=${formatted_query}`
         )
             .then((res) => res.json())
@@ -42,10 +42,11 @@ search.addEventListener("keypress", (e) => {
 // Function to show cast members in detail div
 function showCast(cast) {
     const castList = document.createElement("ul");
+    castList.className = "cast-li";
     cast.forEach((actor) => {
         const listItem = document.createElement("li");
+        listItem.className = "cast-ul";
         listItem.innerText = actor.name;
-        listItem.style.listStyle = "none";
         castList.appendChild(listItem);
     });
     detail.appendChild(castList);
@@ -72,17 +73,19 @@ function showMovies(movies) {
 
         // Create a paragraph element to display the movie's original title.
         const title = document.createElement("p");
+        title.className = "title";
         title.innerText = movie.original_title;
 
         // Create a paragraph element to display the movie's release date if available, or a default message if not.
         const releaseDate = document.createElement("p");
-        releaseDate.style.fontSize = "10px";
+        releaseDate.className = "date";
         releaseDate.innerText = movie.release_date
             ? `Release date: ${movie.release_date}`
             : "Release date: Not found";
 
         // Create a paragraph element to display the movie's rating.
         const rating = document.createElement("p");
+        rating.className = "rating";
 
         // Round the rating to 1 decimal place
         rating.innerText = `Rating: ${Math.round(parseFloat(movie.vote_average) * 10) / 10}/10`;

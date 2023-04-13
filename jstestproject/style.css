@@ -7,6 +7,8 @@
     box-sizing: border-box;
 }
 
+/* ----------------------NavBar Styling------------------------- */
+
 /* Style the navigation bar */
 nav {
     display: flex;
@@ -37,8 +39,10 @@ input:focus {
     outline: none;
 }
 
+/* ----------------------------Main Section Styling--------------------------- */
+
 /* Style the main content section */
-section {
+#movies {
     display: flex;
     flex-wrap: wrap;
     padding: 20px 40px;
@@ -52,7 +56,7 @@ section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    gap: 20px;
     width: 250px;
     box-shadow: 2px 2px 10px #8088ff;
     transition-duration: 0.5s;
@@ -71,22 +75,19 @@ img {
     height: fit-content;
 }
 
-/* Style the description in each card */
-.desc {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-/* Style the text in each card */
-p {
+/* Style the title in each card */
+.title {
     font-size: 20px;
-    font-weight: 600;
+    font-weight: 700;
 }
 
-/* Style the highlighted text in each card */
-span {
+/* Style the release date in each card */
+.date {
+    font-weight: 700;
+}
+
+/* Style the rating in each card */
+.rating {
     font-weight: 700;
 }
 
@@ -94,7 +95,7 @@ span {
 .detail {
     display: flex;
     align-self: center;
-    justify-content: space-between;
+    gap: 20px;
     padding: 20px;
     width: 60vw;
     flex-direction: column;
@@ -107,9 +108,10 @@ span {
     background-color: #e7fff7;
 }
 
+
 /* Style the button in the detail view */
 button {
-    align-self: center;
+    align-self: flex-end;
     font-size: large;
     font-weight: 700;
     padding: 20px;
@@ -124,4 +126,8 @@ button {
 button:hover {
     background-color: aqua;
     transition-duration: 0.8s;
+}
+
+.cast-ul {
+    list-style: none;
 }
