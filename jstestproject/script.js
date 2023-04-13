@@ -14,7 +14,8 @@ search.addEventListener("keypress", (e) => {
     if (e.key === "Enter") {
         e.preventDefault();
         const query = e.target.value;
-        const formatted_query = query.split(" ").join("%20");
+        console.log(typeof (query))
+        const formatted_query = query.trim().split(" ").join("%20");
 
         // check if data is in cache
         if (localStorage.getItem(formatted_query)) {
