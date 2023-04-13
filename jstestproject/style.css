@@ -1,3 +1,4 @@
+/* Reset default styles and set global styles */
 * {
     padding: 0px;
     margin: 0px;
@@ -6,6 +7,7 @@
     box-sizing: border-box;
 }
 
+/* Style the navigation bar */
 nav {
     display: flex;
     justify-content: space-between;
@@ -14,12 +16,14 @@ nav {
     background-color: #8088ff;
 }
 
+/* Style the main heading */
 h1 {
     font-size: 2rem;
     font-weight: 600;
     color: white;
 }
 
+/* Style the input field */
 input {
     padding: 10px;
     border-radius: 2rem;
@@ -28,10 +32,12 @@ input {
     box-shadow: 2px 2px 10px 2px #e7fff7;
 }
 
+/* Remove the default focus outline on input field */
 input:focus {
     outline: none;
 }
 
+/* Style the main content section */
 section {
     display: flex;
     flex-wrap: wrap;
@@ -40,6 +46,7 @@ section {
     row-gap: 50px;
 }
 
+/* Style each card in the content section */
 .card {
     padding: 20px;
     display: flex;
@@ -51,18 +58,20 @@ section {
     transition-duration: 0.5s;
 }
 
+/* Style the hover effect on each card */
 .card:hover {
     cursor: pointer;
     background-color: #8088ff;
     transition-duration: 0.5s;
 }
 
-
+/* Style the images in each card */
 img {
     width: 100%;
     height: fit-content;
 }
 
+/* Style the description in each card */
 .desc {
     width: 100%;
     display: flex;
@@ -70,15 +79,18 @@ img {
     align-items: center;
 }
 
+/* Style the text in each card */
 p {
     font-size: 20px;
     font-weight: 600;
 }
 
+/* Style the highlighted text in each card */
 span {
     font-weight: 700;
 }
 
+/* Style the detail view for each card */
 .detail {
     display: flex;
     align-self: center;
@@ -89,13 +101,14 @@ span {
     flex-direction: column;
     box-shadow: 2px 2px 10px #8088ff;
     border-radius: 1rem;
-    position: absolute;
+    position: fixed;
     z-index: 1;
     top: 25%;
     left: 25%;
     background-color: #e7fff7;
 }
 
+/* Style the button in the detail view */
 button {
     font-size: large;
     font-weight: 700;
@@ -107,6 +120,7 @@ button {
     transition-duration: 0.5s;
 }
 
+/* Style the hover effect on the button in the detail view */
 button:hover {
     background-color: aqua;
     transition-duration: 0.8s;
