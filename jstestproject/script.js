@@ -1,8 +1,9 @@
 const API_KEY = "92dc21f6d154878a0bdc203f0e869f85";
-const BASE_URL = "https://api.themoviedb.org/3/search/";
+const SEARCH_URL = "https://api.themoviedb.org/3/search/";
+const CAST_URL = "https://api.themoviedb.org/3/movie/"
 const search = document.getElementById("search");
 const cards = document.querySelectorAll(".card");
-const detail = document.querySelector(".detail");
+const detail = document.querySelectorAll(".detail");
 const section = document.querySelector("section");
 
 search.addEventListener("keypress", (e) => {
@@ -12,45 +13,67 @@ search.addEventListener("keypress", (e) => {
         const query = e.target.value;
         const formatted_query = query.split(" ").join("%20");
 
-        // fetch("https://api.themoviedb.org/3/search/movie?api_key=92dc21f6d154878a0bdc203f0e869f85&query=The%20last%20of%20us&page=1")
-        //     .then(res => res.json())
-        //     .then(data => console.log(data));
-
-        // Fetch by movie name
-        const movieData = fetch(`${BASE_URL}movie?api_key=${API_KEY}&query=${formatted_query}`)
+        // Fetch Movie data by searching name
+        const movieData = fetch(`${SEARCH_URL}movie?api_key=${API_KEY}&query=${formatted_query}`)
             .then(res => res.json())
             .then(data => localStorage.setItem("data", JSON.stringify(data)))
             .then(() => {
                 const data = localStorage.getItem("data");
                 const parsedData = JSON.parse(data);
-                const item = parsedData.results[0];
-                return item;
+                const movie = parsedData.results[0];
+                const id = movie.id;
+                document.querySelectorAll("p")[0].innerText = movie.original_title;
+                document.querySelectorAll("span")[0].innerText = movie.release_date;
+                document.querySelectorAll("img")[0].src = movie.poster_path;
+                document.querySelectorAll("h3")[0].innerText = movie.overview;
+                return id;
             })
-            .then(item => {
-                document.querySelectorAll("p")[0].innerText = item.original_title;
-                document.querySelectorAll("span")[0].innerText = item.release_date;
-                document.querySelectorAll("img")[0].src = item.poster_path;
+            .then(identity => {
+                fetch(`${CAST_URL}${identity}/credits?api_key=${API_KEY}`)
+            })
+            .then(res => res.json())
+            .then(data => localStorage.setItem("credits", JSON.stringify(data)))
+            .then(() => {
+                const data = localStorage.getItem("credits");
+                const parsedData = JSON.parse(data);
+                const credits = parsedData.cast[0];
+                document.querySelectorAll("h4")[0].innerText = credits.name;
+            })
+            .then(() => {
+                const cards = document.querySelectorAll(".card");
+                cards.forEach((card, index) => {
+                    card.addEventListener("click", (e) => {
+                        detail[index].style.display = "flex";
+                    });
+                });
+
             })
             .catch(err => console.error(err));
+        return false;
+    }
+})
 
-        // Fetch by keyword
+const closebtns = document.querySelectorAll("button");
+closebtns.forEach((closebtn) => {
+    closebtn.addEventListener("click", (e) => {
+        detail.forEach((el) => {
+            el.style.display = "none";
+        })
+
+    })
+});
+
+
+
+
+
+
+
+
+
+
+// Fetch by keyword
         // const keywordData = fetch(`${BASE_URL}keyword?api_key=${API_KEY}&query=${formatted_query}`)
         //     .then(res => res.json())
         //     .then(data => localStorage.setItem("data", JSON.stringify(data)))
         //     .catch(err => console.error(err))
-    }
-})
-
-cards.forEach(card => {
-    card.addEventListener("click", (e) => {
-        e.preventDefault();
-
-    })
-})
-const closebtns = document.querySelectorAll("button");
-closebtns.forEach((closebtn) => {
-    closebtn.addEventListener("click", (e) => {
-        e.preventDefault();
-
-    })
-})
