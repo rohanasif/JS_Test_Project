@@ -22,11 +22,23 @@ search.addEventListener("keypress", (e) => {
                     const card = document.createElement("div");
                     card.className = "card";
                     const img = document.createElement("img");
-                    img.src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+                    if (movie.poster_path) {
+                        img.src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+                    }
+                    // else{
+                    //     img.src = 
+                    // }
                     const title = document.createElement("p");
                     title.innerText = movie.original_title;
                     const releaseDate = document.createElement("p");
-                    releaseDate.innerText = `Release date: ${movie.release_date}`;
+                    releaseDate.style.fontSize = "10px";
+                    if (movie.release_date) {
+                        releaseDate.innerText = `Release date: ${movie.release_date}`;
+                    }
+                    else {
+                        releaseDate.innerText = "";
+                    }
+
                     card.appendChild(img);
                     card.appendChild(title);
                     card.appendChild(releaseDate);
