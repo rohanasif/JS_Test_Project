@@ -3,6 +3,9 @@ for (const radioBtn of radioBtns) {
     radioBtn.addEventListener('change', () => {
         if (radioBtn.checked && radioBtn.value === "keyword") {
 
+            // Change focus to searchbar as soon as a radio button is clicked
+            search.focus();
+
             // Add keypress listener to search bar.
             search.addEventListener("keypress", (e) => {
                 if (e.key === "Enter") {
@@ -42,37 +45,71 @@ for (const radioBtn of radioBtns) {
     });
 }
 
+// Declare a global variable to hold all the movies.
 let allMovies;
 
+// Define a function to show a list of items.
 function showItems(items) {
+
+    // Initialize the allMovies array to an empty array.
     allMovies = [];
+
+    // Initialize a count variable to 0.
     let count = 0;
-    for (let i = 0; i < items.length; i++) {
-        const newQuery = items[i].name;
+
+    // Loop through each item in the items array using a for-of loop.
+    for (const item of items) {
+
+        // Extract the name of the item.
+        const newQuery = item.name;
+
+        // Format the name for use in a URL.
         const formattedNewQuery = newQuery.trim().split(" ").join("%20");
+
+        // Generate a storage key for the item.
         const storageKey = formattedNewQuery + "-byTitle";
+
+        // Check if the movies for this item are already in localStorage.
         if (localStorage.getItem(storageKey) && localStorage.getItem(storageKey) !== "undefined") {
+
+            // If the movies are in localStorage, get them and add them to the allMovies array.
             const movies = JSON.parse(localStorage.getItem(storageKey));
             for (let j = 0; j < movies.length; j++) {
                 allMovies.push(movies[j]);
             }
+
+            // Increment the count variable.
             count++;
+
+            // Check if all items have been processed, and if so, call the showKeywordResults function with the allMovies array.
             if (count === items.length) {
                 showKeywordResults(allMovies);
             }
         }
         else {
+
+            // If the movies for this item are not in localStorage, fetch them from the API.
             fetch(
                 `${SEARCH_URL}api_key=${API_KEY}&query=${formattedNewQuery}`
             )
                 .then((res) => res.json())
                 .then((data) => {
+
+                    // Get the list of movies from the API response.
                     const movies = data.results;
+
+                    // Store the movies in localStorage.
                     localStorage.setItem(storageKey, JSON.stringify(movies));
+
+                    // Add the movies to the allMovies array.
                     for (let j = 0; j < movies.length; j++) {
                         allMovies.push(movies[j]);
                     }
+
+                    // Increment the count variable.
                     count++;
+
+                    // Check if all items have been processed, and if so, call the showKeywordResults function with the allMovies array.
                     if (count === items.length) {
                         showKeywordResults(allMovies);
                     }
@@ -81,7 +118,6 @@ function showItems(items) {
         }
     }
 }
-
 
 function showKeywordResults(movies) {
 

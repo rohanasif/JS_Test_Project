@@ -3,6 +3,9 @@ for (const radioBtn of radioBtns) {
     radioBtn.addEventListener('change', () => {
         if (radioBtn.checked && radioBtn.value === "title") {
 
+            // Change focus to searchbar as soon as a radio button is clicked
+            search.focus();
+
             // Add keypress listener to search bar.
             search.addEventListener("keypress", (e) => {
                 if (e.key === "Enter") {
