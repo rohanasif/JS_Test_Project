@@ -15,9 +15,19 @@
     <!-- Start Nav -->
     <nav>
         <h1>MOVIE METER</h1>
-        <form>
+        <div class="inputs">
             <input type="text" placeholder="Search" id="search">
-        </form>
+            <div class="radio-btns">
+                <div class="radio-btn">
+                    <input type="radio" id="title" name="criteria" value="title">
+                    <label for="title">Title</label>
+                </div>
+                <div class="radio-btn">
+                    <input type="radio" id="keyword" name="criteria" value="keyword">
+                    <label for="keyword">keyword</label>
+                </div>
+            </div>
+        </div>
         <div class="icon-div">
             <i class="fa-solid fa-magnifying-glass"></i>
         </div>
