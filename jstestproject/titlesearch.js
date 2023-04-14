@@ -42,7 +42,7 @@ for (const radioBtn of radioBtns) {
     });
 }
 
-// Function to show movies in card div.
+// Function to show movies in card div using titlesearch.
 function showMovies(movies) {
 
     // Clear the section element to remove any previously displayed movies.
