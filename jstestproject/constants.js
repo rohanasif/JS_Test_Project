@@ -1,7 +1,8 @@
 // Global constants
 const API_KEY = "92dc21f6d154878a0bdc203f0e869f85";
-const SEARCH_URL = "https://api.themoviedb.org/3/search/";
+const SEARCH_URL = "https://api.themoviedb.org/3/search/movie?";
 const CAST_URL = "https://api.themoviedb.org/3/movie/";
+const KEYWORD_URL = "https://api.themoviedb.org/3/search/keyword?"
 
 // Get dom elements
 const search = document.getElementById("search");

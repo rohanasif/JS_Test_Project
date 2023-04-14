@@ -9,10 +9,11 @@ for (const radioBtn of radioBtns) {
                     e.preventDefault();
                     const query = e.target.value;
                     const formatted_query = query.trim().split(" ").join("%20");
+                    const storageKey = formatted_query + "-byTitle"
 
                     // check if data is in cache
-                    if (localStorage.getItem(formatted_query)) {
-                        const movies = JSON.parse(localStorage.getItem(formatted_query));
+                    if (localStorage.getItem(storageKey) && localStorage.getItem(storageKey) !== "undefined") {
+                        const movies = JSON.parse(localStorage.getItem(storageKey));
                         showMovies(movies);
 
                         // Returning false from an event handler will automatically call event.stopPropagation() and event.preventDefault().
@@ -22,12 +23,12 @@ for (const radioBtn of radioBtns) {
                     // else fetch data and cache it
                     else {
                         fetch(
-                            `${SEARCH_URL}movie?api_key=${API_KEY}&query=${formatted_query}`
+                            `${SEARCH_URL}api_key=${API_KEY}&query=${formatted_query}`
                         )
                             .then((res) => res.json())
                             .then((data) => {
                                 const movies = data.results;
-                                localStorage.setItem(formatted_query, JSON.stringify(movies));
+                                localStorage.setItem(storageKey, JSON.stringify(movies));
                                 showMovies(movies);
                             })
                             .catch((err) => console.error(err));
