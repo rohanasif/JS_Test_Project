@@ -3,13 +3,13 @@ for (const radioBtn of radioBtns) {
     radioBtn.addEventListener('change', () => {
         if (radioBtn.checked && radioBtn.value === "keyword") {
 
-            // Change focus to searchbar as soon as a radio button is clicked
+            // Change focus to searchbar and clear it as soon as a radio button is clicked
             search.focus();
+            search.value = "";
 
             // Add keypress listener to search bar.
             search.addEventListener("keypress", (e) => {
                 if (e.key === "Enter") {
-                    e.preventDefault();
                     const query = e.target.value;
                     const formattedQuery = query.trim().split(" ").join("%20");
                     const storageKey = formattedQuery + "-byKeyword";
