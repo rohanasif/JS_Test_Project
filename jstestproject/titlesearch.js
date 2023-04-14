@@ -1,17 +1,17 @@
-// Loop through the radio button to check if title button is checked
+// Loop through the radio button to check if title button is checked.
 for (const radioBtn of radioBtns) {
     radioBtn.addEventListener('change', () => {
         if (radioBtn.checked && radioBtn.value === "title") {
 
-            // Add keypress listener to search bar
+            // Add keypress listener to search bar.
             search.addEventListener("keypress", (e) => {
                 if (e.key === "Enter") {
                     e.preventDefault();
                     const query = e.target.value;
-                    const formatted_query = query.trim().split(" ").join("%20");
-                    const storageKey = formatted_query + "-byTitle"
+                    const formattedQuery = query.trim().split(" ").join("%20");
+                    const storageKey = formattedQuery + "-byTitle";
 
-                    // check if data is in cache
+                    // Check if data is in cache.
                     if (localStorage.getItem(storageKey) && localStorage.getItem(storageKey) !== "undefined") {
                         const movies = JSON.parse(localStorage.getItem(storageKey));
                         showMovies(movies);
@@ -20,10 +20,10 @@ for (const radioBtn of radioBtns) {
                         return false;
                     }
 
-                    // else fetch data and cache it
+                    // Else fetch data and cache it.
                     else {
                         fetch(
-                            `${SEARCH_URL}api_key=${API_KEY}&query=${formatted_query}`
+                            `${SEARCH_URL}api_key=${API_KEY}&query=${formattedQuery}`
                         )
                             .then((res) => res.json())
                             .then((data) => {
@@ -36,29 +36,13 @@ for (const radioBtn of radioBtns) {
                         // Returning false from an event handler will automatically call event.stopPropagation() and event.preventDefault().
                         return false;
                     }
-
-
                 }
             });
-
         }
     });
 }
 
-// Function to show cast members in detail div
-function showCast(cast) {
-    const castList = document.createElement("ul");
-    castList.className = "cast-li";
-    cast.forEach((actor) => {
-        const listItem = document.createElement("li");
-        listItem.className = "cast-ul";
-        listItem.innerText = actor.name;
-        castList.appendChild(listItem);
-    });
-    detail.appendChild(castList);
-}
-
-// Function to show movies in card div
+// Function to show movies in card div.
 function showMovies(movies) {
 
     // Clear the section element to remove any previously displayed movies.
@@ -93,7 +77,7 @@ function showMovies(movies) {
         const rating = document.createElement("p");
         rating.className = "rating";
 
-        // Round the rating to 1 decimal place
+        // Round the rating to 1 decimal place.
         rating.innerText = `Rating: ${Math.round(parseFloat(movie.vote_average) * 10) / 10}/10`;
 
         // Append the image, title, and release date elements to the card element.
@@ -166,19 +150,32 @@ function showMovies(movies) {
         });
 
 
-        // Add event listener to the "card" element when clicked
+        // Add event listener to the "card" element when clicked.
         card.addEventListener("click", () => {
 
-            // Select all elements with class "detail"
+            // Select all elements with class "detail".
             const allDetails = document.querySelectorAll(".detail");
 
-            // Loop through each detail element and set its display to "none"
+            // Loop through each detail element and set its display to "none".
             allDetails.forEach(detail => {
                 detail.style.display = "none";
             });
 
-            // Set the clicked element's detail display to "flex"
+            // Set the clicked element's detail display to "flex".
             detail.style.display = "flex";
         });
     });
+}
+
+// Function to show cast members in detail div.
+function showCast(cast) {
+    const castList = document.createElement("ul");
+    castList.className = "cast-li";
+    cast.forEach((actor) => {
+        const listItem = document.createElement("li");
+        listItem.className = "cast-ul";
+        listItem.innerText = actor.name;
+        castList.appendChild(listItem);
+    });
+    detail.appendChild(castList);
 }
