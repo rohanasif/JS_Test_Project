@@ -17,16 +17,16 @@
         <h1>MOVIE METER</h1>
         <div class="inputs">
             <input type="text" placeholder="Search" id="search">
-            <div class="radio-btns">
+            <form class="radio-btns">
                 <div class="radio-btn">
                     <input type="radio" id="title" name="criteria" value="title">
                     <label for="title">Title</label>
                 </div>
                 <div class="radio-btn">
                     <input type="radio" id="keyword" name="criteria" value="keyword">
-                    <label for="keyword">keyword</label>
+                    <label for="keyword">Keyword</label>
                 </div>
-            </div>
+            </form>
         </div>
         <div class="icon-div">
             <i class="fa-solid fa-magnifying-glass"></i>
@@ -45,8 +45,9 @@
         <span>&#169 2023 All rights reserved.</span>
     </footer>
     <!-- End Footer -->
-
-    <script src="./script.js"></script>
+    <script src="./constants.js"></script>
+    <script src="./titlesearch.js"></script>
+    <script src="./keywordsearch.js"></script>
 
 </body>
 

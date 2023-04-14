@@ -1,54 +1,48 @@
-// Global constants
-const API_KEY = "92dc21f6d154878a0bdc203f0e869f85";
-const SEARCH_URL = "https://api.themoviedb.org/3/search/";
-const CAST_URL = "https://api.themoviedb.org/3/movie/";
+// Loop through the radio button to check if title button is checked
+for (const radioBtn of radioBtns) {
+    radioBtn.addEventListener('change', () => {
+        if (radioBtn.checked && radioBtn.value === "title") {
 
-// Get dom elements
-const search = document.getElementById("search");
-const section = document.querySelector("section");
+            // Add keypress listener to search bar
+            search.addEventListener("keypress", (e) => {
+                if (e.key === "Enter") {
+                    e.preventDefault();
+                    const query = e.target.value;
+                    const formatted_query = query.trim().split(" ").join("%20");
 
-// Create the detail and overlay elements
-const detail = document.createElement("div");
-detail.className = "detail";
-const overlay = document.createElement("div");
-overlay.className = "overlay";
+                    // check if data is in cache
+                    if (localStorage.getItem(formatted_query)) {
+                        const movies = JSON.parse(localStorage.getItem(formatted_query));
+                        showMovies(movies);
 
-// Add keypress listener to search bar
-search.addEventListener("keypress", (e) => {
-    if (e.key === "Enter") {
-        e.preventDefault();
-        const query = e.target.value;
-        const formatted_query = query.trim().split(" ").join("%20");
+                        // Returning false from an event handler will automatically call event.stopPropagation() and event.preventDefault().
+                        return false;
+                    }
 
-        // check if data is in cache
-        if (localStorage.getItem(formatted_query)) {
-            const movies = JSON.parse(localStorage.getItem(formatted_query));
-            showMovies(movies);
+                    // else fetch data and cache it
+                    else {
+                        fetch(
+                            `${SEARCH_URL}movie?api_key=${API_KEY}&query=${formatted_query}`
+                        )
+                            .then((res) => res.json())
+                            .then((data) => {
+                                const movies = data.results;
+                                localStorage.setItem(formatted_query, JSON.stringify(movies));
+                                showMovies(movies);
+                            })
+                            .catch((err) => console.error(err));
 
-            // Returning false from an event handler will automatically call event.stopPropagation() and event.preventDefault().
-            return false;
+                        // Returning false from an event handler will automatically call event.stopPropagation() and event.preventDefault().
+                        return false;
+                    }
+
+
+                }
+            });
+
         }
-
-        // else fetch data and cache it
-        else {
-            fetch(
-                `${SEARCH_URL}movie?api_key=${API_KEY}&query=${formatted_query}`
-            )
-                .then((res) => res.json())
-                .then((data) => {
-                    const movies = data.results;
-                    localStorage.setItem(formatted_query, JSON.stringify(movies));
-                    showMovies(movies);
-                })
-                .catch((err) => console.error(err));
-
-            // Returning false from an event handler will automatically call event.stopPropagation() and event.preventDefault().
-            return false;
-        }
-
-
-    }
-});
+    });
+}
 
 // Function to show cast members in detail div
 function showCast(cast) {
