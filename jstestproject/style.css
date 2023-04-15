@@ -63,7 +63,7 @@ input[type=text]:focus {
     outline: none;
 }
 
-/* OVerride the autofill background color in chrome or other browsers */
+/* Override the autofill background color in chrome or other browsers */
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus {
