@@ -40,6 +40,7 @@ h1 {
     gap: 10px;
 }
 
+/* Style the searchbar div */
 .searchbar {
     background-color: white;
     display: flex;
