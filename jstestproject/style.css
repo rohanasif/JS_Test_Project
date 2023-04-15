@@ -71,7 +71,6 @@ input:-webkit-autofill:focus {
 }
 
 /* Style the submit button */
-
 input[type=submit] {
     padding: 10px;
     border-radius: 2rem;
