@@ -4,13 +4,12 @@ const SEARCH_URL = "https://api.themoviedb.org/3/search/movie?";
 const CAST_URL = "https://api.themoviedb.org/3/movie/";
 const KEYWORD_URL = "https://api.themoviedb.org/3/search/keyword?";
 
-// Get dom elements
+// Get DOM elements
 const search = document.getElementById("search");
-
-const radioBtns = document.querySelectorAll('input[name="criteria"]')
-
+const radioBtns = document.querySelectorAll('input[name="criteria"]');
+const titleRadioBtn = document.getElementById('title');
+const keywordRadioBtn = document.getElementById('keyword');
 const submitBtn = document.getElementById("submit");
-
 const section = document.querySelector("section");
 
 // Create the detail and overlay elements
@@ -18,7 +17,6 @@ const detail = document.createElement("div");
 detail.className = "detail";
 const overlay = document.createElement("div");
 overlay.className = "overlay";
-
 
 // Title query function
 const handleTitleSubmit = (e) => {
@@ -75,5 +73,12 @@ const handleKeywordSubmit = (e) => {
                 showItems(items);
             })
             .catch((err) => console.error(err));
+    }
+}
+
+// Function to prevent form submission if no radio button is checked
+const preventSubmission = (e) => {
+    if (!titleRadioBtn.checked && !keywordRadioBtn.checked) {
+        e.preventDefault();
     }
 }

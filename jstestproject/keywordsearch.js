@@ -1,3 +1,6 @@
+// Prevent form submission if no radio button is checked
+submitBtn.addEventListener("click", preventSubmission);
+
 // Loop through the radio button to check if keyword button is checked.
 for (const radioBtn of radioBtns) {
     radioBtn.addEventListener('change', () => {
