@@ -1,22 +1,34 @@
-// Prevent form submission if no radio button is checked
-submitBtn.addEventListener("click", preventSubmission);
+// Function to handle data caching for daily trending movies
+function showStartPage() {
+    const date = new Date();
+    const dateString = date.getDate();
+    const monthString = date.getMonth();
+    const yearString = date.getFullYear();
+    const storageKey = `${monthString}-${dateString}-${yearString}`;
 
-// Loop through the radio button to check if title button is checked.
-for (const radioBtn of radioBtns) {
-    radioBtn.addEventListener('change', () => {
-        if (radioBtn.checked && radioBtn.value === "title") {
+    // Check if data is in cache.
+    if (localStorage.getItem(storageKey) && localStorage.getItem(storageKey) !== "undefined") {
+        const movies = JSON.parse(localStorage.getItem(storageKey));
+        showTrendingMovies(movies);
+    }
 
-            // Change focus to searchbar as soon as a radio button is clicked
-            search.focus();
-
-            // Add click listener to submit button.
-            submitBtn.addEventListener("click", handleTitleSubmit);
-        }
-    });
+    // Else fetch data and cache it.
+    else {
+        fetch(
+            `${START_URL}api_key=${API_KEY}`
+        )
+            .then((res) => res.json())
+            .then((data) => {
+                const movies = data.results;
+                localStorage.setItem(storageKey, JSON.stringify(movies));
+                showTrendingMovies(movies);
+            })
+            .catch((err) => console.error(err));
+    }
 }
 
-// Function to show movies in card div using titlesearch.
-function showMovies(movies) {
+// Function to show trending movies on homescreen
+function showTrendingMovies(movies) {
 
     // Clear the section element to remove any previously displayed movies.
     section.innerHTML = "";
@@ -140,15 +152,4 @@ function showMovies(movies) {
     });
 }
 
-// Function to show cast members in detail div.
-function showCast(cast) {
-    const castList = document.createElement("ul");
-    castList.className = "cast-ul";
-    cast.forEach((actor) => {
-        const listItem = document.createElement("li");
-        listItem.className = "cast-li";
-        listItem.innerText = actor.name;
-        castList.appendChild(listItem);
-    });
-    detail.appendChild(castList);
-}
+showStartPage();

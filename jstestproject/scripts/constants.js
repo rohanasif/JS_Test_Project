@@ -3,6 +3,7 @@ const API_KEY = "92dc21f6d154878a0bdc203f0e869f85";
 const SEARCH_URL = "https://api.themoviedb.org/3/search/movie?";
 const CAST_URL = "https://api.themoviedb.org/3/movie/";
 const KEYWORD_URL = "https://api.themoviedb.org/3/search/keyword?";
+const START_URL = "https://api.themoviedb.org/3/trending/movie/day?";
 
 // Get DOM elements
 const search = document.getElementById("search");
@@ -24,6 +25,12 @@ const handleTitleSubmit = (e) => {
     section.innerHTML = "";
     const query = search.value;
     const formattedQuery = query.trim().split(" ").join("%20");
+
+    // Check if query is empty
+    if (query === "") {
+        return;
+    }
+
     const storageKey = formattedQuery + "-byTitle";
 
     // Check if data is in cache.
@@ -53,6 +60,12 @@ const handleKeywordSubmit = (e) => {
     section.innerHTML = "";
     const query = search.value;
     const formattedQuery = query.trim().split(" ").join("%20");
+
+    // Check if query is empty
+    if (query === "") {
+        return;
+    }
+
     const storageKey = formattedQuery + "-byKeyword";
 
     // Check if data is in cache.
@@ -79,7 +92,11 @@ const handleKeywordSubmit = (e) => {
 // Function to prevent form submission if no radio button is checked
 const preventSubmission = (e) => {
     if (!titleRadioBtn.checked && !keywordRadioBtn.checked) {
-        alert("Please select a criteria to search by")
+        alert("Please select a criteria to search by");
         e.preventDefault();
+    }
+    if (search.value === "") {
+        e.preventDefault();
+        return;
     }
 }

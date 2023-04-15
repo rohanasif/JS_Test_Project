@@ -13,9 +13,6 @@ for (const radioBtn of radioBtns) {
             submitBtn.addEventListener("click", handleKeywordSubmit);
         }
     });
-
-    // Remove click listener from submit button.
-    submitBtn.removeEventListener("click", handleKeywordSubmit);
 }
 
 // Declare a global variable to hold all the movies.

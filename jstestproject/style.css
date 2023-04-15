@@ -54,7 +54,6 @@ h1 {
 
 /* Style the search field */
 input[type=text] {
-    padding: 0px;
     font-size: 1.5rem;
     border: none;
 }
@@ -73,7 +72,6 @@ input:-webkit-autofill:focus {
 
 /* Style the submit button */
 input[type=submit] {
-    margin: -6px;
     padding: 10px;
     border-radius: 999px;
     border: 1px solid;
@@ -202,6 +200,8 @@ img {
     top: 25%;
     left: 25%;
     background-color: #e7fff7;
+    /* max-height: calc(100vh - 400px);
+    overflow-y: auto; */
 }
 
 
