@@ -3,42 +3,35 @@ for (const radioBtn of radioBtns) {
     radioBtn.addEventListener('change', () => {
         if (radioBtn.checked && radioBtn.value === "title") {
 
-            // Change focus to searchbar and clear it as soon as a radio button is clicked
+            // Change focus to searchbar as soon as a radio button is clicked
             search.focus();
-            search.value = "";
 
-            // Add keypress listener to search bar.
-            search.addEventListener("keypress", (e) => {
-                if (e.key === "Enter") {
-                    const query = e.target.value;
-                    const formattedQuery = query.trim().split(" ").join("%20");
-                    const storageKey = formattedQuery + "-byTitle";
+            // Add click listener to submit button.
+            submitBtn.addEventListener("click", (e) => {
+                e.preventDefault();
+                section.innerHTML = "";
+                const query = search.value;
+                const formattedQuery = query.trim().split(" ").join("%20");
+                const storageKey = formattedQuery + "-byTitle";
 
-                    // Check if data is in cache.
-                    if (localStorage.getItem(storageKey) && localStorage.getItem(storageKey) !== "undefined") {
-                        const movies = JSON.parse(localStorage.getItem(storageKey));
-                        showMovies(movies);
+                // Check if data is in cache.
+                if (localStorage.getItem(storageKey) && localStorage.getItem(storageKey) !== "undefined") {
+                    const movies = JSON.parse(localStorage.getItem(storageKey));
+                    showMovies(movies);
+                }
 
-                        // Returning false from an event handler will automatically call event.stopPropagation() and event.preventDefault().
-                        return false;
-                    }
-
-                    // Else fetch data and cache it.
-                    else {
-                        fetch(
-                            `${SEARCH_URL}api_key=${API_KEY}&query=${formattedQuery}`
-                        )
-                            .then((res) => res.json())
-                            .then((data) => {
-                                const movies = data.results;
-                                localStorage.setItem(storageKey, JSON.stringify(movies));
-                                showMovies(movies);
-                            })
-                            .catch((err) => console.error(err));
-
-                        // Returning false from an event handler will automatically call event.stopPropagation() and event.preventDefault().
-                        return false;
-                    }
+                // Else fetch data and cache it.
+                else {
+                    fetch(
+                        `${SEARCH_URL}api_key=${API_KEY}&query=${formattedQuery}`
+                    )
+                        .then((res) => res.json())
+                        .then((data) => {
+                            const movies = data.results;
+                            localStorage.setItem(storageKey, JSON.stringify(movies));
+                            showMovies(movies);
+                        })
+                        .catch((err) => console.error(err));
                 }
             });
         }

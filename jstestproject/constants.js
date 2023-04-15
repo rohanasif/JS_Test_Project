@@ -9,6 +9,8 @@ const search = document.getElementById("search");
 
 const radioBtns = document.querySelectorAll('input[name="criteria"]')
 
+const submitBtn = document.getElementById("submit");
+
 const section = document.querySelector("section");
 
 // Create the detail and overlay elements
