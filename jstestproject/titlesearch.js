@@ -7,35 +7,13 @@ for (const radioBtn of radioBtns) {
             search.focus();
 
             // Add click listener to submit button.
-            submitBtn.addEventListener("click", (e) => {
-                e.preventDefault();
-                section.innerHTML = "";
-                const query = search.value;
-                const formattedQuery = query.trim().split(" ").join("%20");
-                const storageKey = formattedQuery + "-byTitle";
+            submitBtn.addEventListener("click", handleTitleSubmit);
 
-                // Check if data is in cache.
-                if (localStorage.getItem(storageKey) && localStorage.getItem(storageKey) !== "undefined") {
-                    const movies = JSON.parse(localStorage.getItem(storageKey));
-                    showMovies(movies);
-                }
-
-                // Else fetch data and cache it.
-                else {
-                    fetch(
-                        `${SEARCH_URL}api_key=${API_KEY}&query=${formattedQuery}`
-                    )
-                        .then((res) => res.json())
-                        .then((data) => {
-                            const movies = data.results;
-                            localStorage.setItem(storageKey, JSON.stringify(movies));
-                            showMovies(movies);
-                        })
-                        .catch((err) => console.error(err));
-                }
-            });
         }
     });
+
+    // Remove click listener from submit button.
+    submitBtn.removeEventListener("click", handleTitleSubmit);
 }
 
 // Function to show movies in card div using titlesearch.
