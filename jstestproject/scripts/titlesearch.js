@@ -146,10 +146,10 @@ function showMovies(movies) {
 // Function to show cast members in detail div.
 function showCast(cast) {
     const castList = document.createElement("ul");
-    castList.className = "cast-li";
+    castList.className = "cast-ul";
     cast.forEach((actor) => {
         const listItem = document.createElement("li");
-        listItem.className = "cast-ul";
+        listItem.className = "cast-li";
         listItem.innerText = actor.name;
         castList.appendChild(listItem);
     });

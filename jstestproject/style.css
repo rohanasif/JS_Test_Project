@@ -222,7 +222,11 @@ button:active {
 
 /* Remove bullets from the list of cast */
 .cast-ul {
+    display: flex;
+    row-gap: 8px;
+    column-gap: 20px;
     list-style: none;
+    flex-wrap: wrap;
 }
 
 
