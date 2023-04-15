@@ -79,6 +79,7 @@ const handleKeywordSubmit = (e) => {
 // Function to prevent form submission if no radio button is checked
 const preventSubmission = (e) => {
     if (!titleRadioBtn.checked && !keywordRadioBtn.checked) {
+        alert("Please select a criteria to search by")
         e.preventDefault();
     }
 }
