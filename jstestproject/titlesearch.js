@@ -11,7 +11,6 @@ for (const radioBtn of radioBtns) {
 
             // Add click listener to submit button.
             submitBtn.addEventListener("click", handleTitleSubmit);
-
         }
     });
 
