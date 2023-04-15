@@ -70,7 +70,7 @@ input:-webkit-autofill:focus {
     -webkit-box-shadow: 0 0 0px 40rem #ffff inset;
 }
 
-/* Style the 'go' submit button */
+/* Style the submit button */
 
 input[type=submit] {
     padding: 10px;
@@ -79,10 +79,18 @@ input[type=submit] {
     color: white;
     background-color: #8088ff;
     font-size: 16px;
+    transition-duration: 0.5s;
 }
 
 input[type=submit]:hover {
     cursor: pointer;
+    background-color: #6c76ff;
+    transition-duration: 0.5s;
+}
+
+input[type=submit]:active {
+    background-color: #3946ff;
+    transition-duration: 0.5s;
 }
 
 /* Style the radio buttons */
@@ -211,6 +219,7 @@ button {
 
 /* Style the hover effect on the button in the detail view */
 button:hover {
+    color:white;
     background-color: aqua;
     transition-duration: 0.5s;
 }
@@ -218,6 +227,7 @@ button:hover {
 /* Style the active effect on the button in the detail view */
 button:active {
     background-color: rgb(0, 126, 126);
+    transition-duration: 0.5s;
 }
 
 /* Remove bullets from the list of cast */
