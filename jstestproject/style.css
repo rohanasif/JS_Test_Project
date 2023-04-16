@@ -182,12 +182,13 @@ img {
     top: 0;
     left: 0;
     background-color: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
 }
 
 /* Style the detail view for each card */
 .detail {
     display: flex;
-    align-self: center;
     gap: 20px;
     padding: 20px;
     width: 60vw;
@@ -195,7 +196,6 @@ img {
     box-shadow: 2px 2px 10px #8088ff;
     border-radius: 1rem;
     position: fixed;
-    left: 25%;
     background-color: #e7fff7;
     /* max-height: calc(100vh - 400px);
     overflow-y: auto; */
