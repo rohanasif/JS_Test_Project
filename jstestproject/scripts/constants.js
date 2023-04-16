@@ -7,6 +7,7 @@ const START_URL = "https://api.themoviedb.org/3/trending/movie/day?";
 
 // Get DOM elements
 const search = document.getElementById("search");
+const searchIcon = document.getElementById(".icon-div");
 const radioBtns = document.querySelectorAll('input[name="criteria"]');
 const titleRadioBtn = document.getElementById('title');
 const keywordRadioBtn = document.getElementById('keyword');

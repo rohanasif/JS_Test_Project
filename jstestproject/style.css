@@ -104,21 +104,19 @@ input[type=submit]:active {
     color: white;
 }
 
-/* Style the icon div */
-.icon-div {
-    cursor: pointer;
-    display: none !important;
-    font-size: 1.5rem;
-}
-
 /* Style the icon when its displayed at and below 720px */
 @media screen and (max-width: 720px) {
-    .inputs {
-        display: none;
+    nav {
+        flex-direction: column;
     }
+}
 
-    .icon-div {
-        display: block !important;
+@media screen and (max-width: 450px) {
+    input[type=text] {
+        font-size: 1rem;
+    }
+    input[type=submit]{
+        font-size: 12px;
     }
 }
 
@@ -197,8 +195,8 @@ img {
     border-radius: 1rem;
     position: fixed;
     background-color: #e7fff7;
-    /* max-height: calc(100vh - 400px);
-    overflow-y: auto; */
+    max-height: calc(90vh);
+    overflow-y: auto;
 }
 
 
