@@ -209,7 +209,7 @@ img {
     border-radius: 1rem;
     position: fixed;
     background-color: #e7fff7;
-    max-height: calc(90vh);
+    max-height: 90vh;
     overflow-y: auto;
 }
 
@@ -265,4 +265,13 @@ footer {
 footer>span {
     font-size: large;
     color: azure;
+}
+
+@media screen and (max-width:768px) {
+    .detail {
+        height: 100%;
+        width: 100%;
+        top: 0px;
+        left: 0px;
+    }
 }
