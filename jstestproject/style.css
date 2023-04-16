@@ -108,6 +108,7 @@ input[type=submit]:active {
 @media screen and (max-width: 720px) {
     nav {
         flex-direction: column;
+        row-gap: 10px;
     }
 }
 
@@ -115,8 +116,21 @@ input[type=submit]:active {
     input[type=text] {
         font-size: 1rem;
     }
-    input[type=submit]{
+
+    input[type=submit] {
         font-size: 12px;
+    }
+
+    .radio-label {
+        font-size: 10px;
+    }
+
+    .radio-btns {
+        justify-content: center;
+    }
+
+    .searchbar {
+        padding: 5px;
     }
 }
 
