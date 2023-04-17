@@ -212,6 +212,11 @@ img {
     overflow-y: auto;
 }
 
+/* Hide the scrollbar but still scroll */
+.detail::-webkit-scrollbar {
+    display: none;
+}
+
 
 /* Style the button in the detail view */
 button {
