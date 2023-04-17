@@ -121,8 +121,7 @@ function showMovies(movies) {
                 section.removeChild(overlay);
             });
         });
-
-
+        
         // Add event listener to the "card" element when clicked.
         card.addEventListener("click", () => {
 
