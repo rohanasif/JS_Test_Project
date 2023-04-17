@@ -186,6 +186,7 @@ img {
 }
 
 .overlay {
+    z-index: 1;
     display: flex;
     width: 100%;
     height: 100vh;
@@ -199,6 +200,7 @@ img {
 
 /* Style the detail view for each card */
 .detail {
+    z-index: 2;
     display: flex;
     gap: 20px;
     padding: 20px;
