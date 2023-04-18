@@ -14,4 +14,3 @@ for (const radioBtn of radioBtns) {
         }
     });
 }
-
