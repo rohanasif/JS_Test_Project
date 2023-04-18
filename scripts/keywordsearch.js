@@ -212,16 +212,3 @@ function showKeywordResults(movies) {
         });
     });
 }
-
-// Function to show cast members in detail div.
-function showCast(cast) {
-    const castList = document.createElement("ul");
-    castList.className = "cast-ul";
-    cast.forEach((actor) => {
-        const listItem = document.createElement("li");
-        listItem.className = "cast-li";
-        listItem.innerText = actor.name;
-        castList.appendChild(listItem);
-    });
-    detail.appendChild(castList);
-}

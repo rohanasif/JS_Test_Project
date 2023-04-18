@@ -219,7 +219,6 @@ img {
     display: none;
 }
 
-
 /* Style the button in the detail view */
 button {
     align-self: flex-end;
@@ -246,6 +245,8 @@ button:active {
     background-color: rgb(0, 126, 126);
     transition-duration: 0.5s;
 }
+
+
 
 /* Remove bullets from the list of cast */
 .cast-ul {

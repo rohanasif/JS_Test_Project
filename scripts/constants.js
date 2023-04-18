@@ -90,6 +90,19 @@ const handleKeywordSubmit = (e) => {
     }
 }
 
+// Function to show cast members in detail div.
+function showCast(cast) {
+    const castList = document.createElement("ul");
+    castList.className = "cast-ul";
+    cast.forEach((actor) => {
+        const listItem = document.createElement("li");
+        listItem.className = "cast-li";
+        listItem.innerText = actor.name;
+        castList.appendChild(listItem);
+    });
+    detail.appendChild(castList);
+}
+
 // Function to prevent form submission if no radio button is checked
 const preventSubmission = (e) => {
     if (!titleRadioBtn.checked && !keywordRadioBtn.checked) {
