@@ -6,7 +6,7 @@ The project contains a total of 7 files:
 - Four JS files.
 - This README file.
 - A style.css file for styling.
-  ## **Explaination:**
+## **Explaination:**
 The 7 files are pretty self-explanatory with comments added throughout. In case a user doesn’t understand, here are some basics:
 
 1. The constants.js file contains constants used throughout the js files. These include both variables and functions.
