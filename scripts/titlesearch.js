@@ -67,10 +67,13 @@ function showMovies(movies) {
 
             // Clear the detail element to remove any previously displayed movie details.
             detail.innerHTML = "";
+            btnDiv.innerHTML = "";
+            detailText.innerHTML = "";
 
             // Create a button element to close the movie details.
             const closeBtn = document.createElement("button");
             closeBtn.innerText = "X";
+            btnDiv.appendChild(closeBtn);
 
             // Create a heading element to display the movie's original title.
             const title = document.createElement("h2");
@@ -84,11 +87,14 @@ function showMovies(movies) {
             const castTitle = document.createElement("h3");
             castTitle.innerText = "Cast:";
 
+            detailText.appendChild(title);
+            detailText.appendChild(overview);
+            detailText.appendChild(castTitle);
+
             // Append the close button, title, overview, and cast title elements to the detail element.
-            detail.appendChild(closeBtn);
-            detail.appendChild(title);
-            detail.appendChild(overview);
-            detail.appendChild(castTitle);
+            detail.appendChild(btnDiv);
+            detail.appendChild(detailText);
+
 
             // Append the detail element to the overlay element.
             overlay.appendChild(detail);

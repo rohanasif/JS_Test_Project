@@ -17,6 +17,10 @@ const section = document.querySelector("section");
 // Create the detail and overlay elements
 const detail = document.createElement("div");
 detail.className = "detail";
+const detailText = document.createElement("div");
+detailText.className = "detail-text";
+const btnDiv = document.createElement("div");
+btnDiv.className = "btn-div";
 const overlay = document.createElement("div");
 overlay.className = "overlay";
 
@@ -100,7 +104,7 @@ function showCast(cast) {
         listItem.innerText = actor.name;
         castList.appendChild(listItem);
     });
-    detail.appendChild(castList);
+    detailText.appendChild(castList);
 }
 
 // Function to prevent form submission if no radio button is checked
