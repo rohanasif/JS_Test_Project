@@ -99,14 +99,14 @@ function showTrendingMovies(movies) {
             const castTitle = document.createElement("h3");
             castTitle.innerText = "Cast:";
 
+            // Append the details to the detailText div
             detailText.appendChild(title);
             detailText.appendChild(overview);
             detailText.appendChild(castTitle);
 
-            // Append the close button, title, overview, and cast title elements to the detail element.
+            // Append the detailText and btnDiv to the detail element.
             detail.appendChild(btnDiv);
             detail.appendChild(detailText);
-
 
             // Append the detail element to the overlay element.
             overlay.appendChild(detail);
